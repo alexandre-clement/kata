@@ -1,13 +1,12 @@
 package context;
 
 import java.awt.*;
-import java.util.Iterator;
 
 /**
  * @author Alexandre Clement
  * @since 22/01/2017.
  */
-class Container extends Basket
+public class Container extends Basket
 {
     private int id;
     private Point location;

@@ -16,7 +16,6 @@ public class ContainerTest
     public void test() throws Exception
     {
         Container container = new Container(0, new Point(10, 2), new Basket(new Item(0, 10), new Item(1, 200)));
-        System.out.println(container);
     }
 
 }

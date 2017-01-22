@@ -16,8 +16,6 @@ public class BasketTest
     public void test() throws Exception
     {
         Basket basket = new Basket(new Item(0, 100), new Item(1, 50));
-        System.out.println(basket);
-
     }
 
 }

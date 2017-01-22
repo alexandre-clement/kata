@@ -16,6 +16,5 @@ public class WarehouseTest
     public void test() throws Exception
     {
         Container container = new Warehouse(0, new Point(10, 2), new Basket(new Item(0, 10), new Item(1, 200)));
-        System.out.println(container);
     }
 }
