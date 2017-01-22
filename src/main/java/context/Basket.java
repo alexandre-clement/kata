@@ -1,12 +1,13 @@
 package context;
 
 import java.util.*;
+import java.util.stream.IntStream;
 
 /**
  * @author Alexandre Clement
  * @since 22/01/2017.
  */
-public class Basket extends ArrayDeque<Item>
+public class Basket extends ArrayList<Item>
 {
     Basket()
     {
@@ -18,9 +19,14 @@ public class Basket extends ArrayDeque<Item>
         super(Arrays.asList(items));
     }
 
-    Basket(Deque<Item> items)
+    Basket(Collection<Item> items)
     {
         super(items);
+    }
+
+    public void remove(Item item, int number)
+    {
+        IntStream.range(0, number).forEach(i -> this.remove(item));
     }
 
     public int countItem(Item item)
@@ -32,4 +38,5 @@ public class Basket extends ArrayDeque<Item>
     {
         return super.stream().map(Item::getPayload).reduce(Integer::sum).orElse(0);
     }
+
 }

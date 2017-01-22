@@ -44,4 +44,30 @@ public class Container extends Basket
     {
         return String.format("%s=%d(%d, %d)%s", this.getClass().getSimpleName(), id, location.x, location.y, super.toString());
     }
+
+    @Override
+    public boolean equals(Object o)
+    {
+        if (this == o)
+            return true;
+        if (o == null || getClass() != o.getClass())
+            return false;
+        if (!super.equals(o))
+            return false;
+
+        Container container = (Container) o;
+
+        if (id != container.id)
+            return false;
+        return location != null ? location.equals(container.location) : container.location == null;
+    }
+
+    @Override
+    public int hashCode()
+    {
+        int result = super.hashCode();
+        result = 31 * result + id;
+        result = 31 * result + (location != null ? location.hashCode() : 0);
+        return result;
+    }
 }

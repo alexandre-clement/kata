@@ -6,4 +6,5 @@ package scheduler;
  */
 public class Planification
 {
+
 }
