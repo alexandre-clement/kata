@@ -20,8 +20,8 @@ public class ExecuteSchedulerTest
     @Test
     public void execute() throws Exception
     {
-        Context mockedContext = new MockedContext();
-        
+        Context mockedContext = new MockedContext().getContext();
+
 
     }
 

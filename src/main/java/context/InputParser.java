@@ -14,7 +14,7 @@ import java.util.regex.Pattern;
  * @author Alexandre Clement
  * @since 22/01/2017.
  */
-public class InputParser implements Context
+public class InputParser
 {
     private static final String INIT = "^(\\d+) (\\d+) (\\d+) (\\d+) (\\d+)$";
     private static final String OBJECT_NUMBER = "^(\\d+)$";
@@ -32,8 +32,13 @@ public class InputParser implements Context
     public InputParser(String filename) throws IOException
     {
         bufferedReader = new BufferedReader(new FileReader(filename));
+    }
+
+    public Context getContext() throws IOException
+    {
         initFleet();
         initOrders();
+        return new Context(warehouses, orders, items, fleet);
     }
 
     void initFleet() throws IOException
@@ -162,29 +167,5 @@ public class InputParser implements Context
         if (integers.length != check)
             throw new NotWellFormedInput();
         return integers;
-    }
-
-    @Override
-    public Fleet getFleet()
-    {
-        return fleet;
-    }
-
-    @Override
-    public List<Warehouse> getWarehouses()
-    {
-        return warehouses;
-    }
-
-    @Override
-    public List<Order> getOrders()
-    {
-        return orders;
-    }
-
-    @Override
-    public List<Item> getItems()
-    {
-        return items;
     }
 }

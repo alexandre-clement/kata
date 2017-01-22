@@ -53,4 +53,10 @@ public class Drone extends Container
     {
         return turns;
     }
+
+    @Override
+    public String toString()
+    {
+        return super.toString() + '.' + turns;
+    }
 }

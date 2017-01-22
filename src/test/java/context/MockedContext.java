@@ -8,7 +8,7 @@ import java.util.List;
  * @author Alexandre Clement
  * @since 22/01/2017.
  */
-public class MockedContext implements Context
+public class MockedContext
 {
     private final Item item0;
     private final Item item1;
@@ -50,27 +50,8 @@ public class MockedContext implements Context
         fleet = new Fleet(2, 500, 25, new Point());
     }
 
-    @Override
-    public Fleet getFleet()
+    public Context getContext()
     {
-        return fleet;
-    }
-
-    @Override
-    public List<Warehouse> getWarehouses()
-    {
-        return warehouses;
-    }
-
-    @Override
-    public List<Order> getOrders()
-    {
-        return orders;
-    }
-
-    @Override
-    public List<Item> getItems()
-    {
-        return items;
+        return new Context(warehouses, orders, items, fleet);
     }
 }

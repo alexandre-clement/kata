@@ -4,6 +4,7 @@ import command.*;
 import context.Context;
 import context.Drone;
 import context.Item;
+import scheduler.Output;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -19,7 +20,6 @@ import java.util.regex.Pattern;
  */
 public class OutputParser
 {
-    private static final String OUT_FILE = "scheduler.out";
     private final int size;
     private Context context;
     private final BufferedReader bufferedReader;
@@ -27,7 +27,7 @@ public class OutputParser
 
     public OutputParser(Context context) throws IOException
     {
-        this(context, OutputParser.OUT_FILE);
+        this(context, Output.OUT_FILE);
     }
 
     public OutputParser(Context context, String filename) throws IOException

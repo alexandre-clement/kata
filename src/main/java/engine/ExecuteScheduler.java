@@ -2,6 +2,7 @@ package engine;
 
 import command.Command;
 import context.Context;
+import context.Drone;
 import context.NotEnoughTurns;
 
 import java.util.List;
@@ -27,6 +28,12 @@ public class ExecuteScheduler
         {
             command.execute(context);
         }
+    }
+
+    public void printResult()
+    {
+        context.getFleet().forEach(System.out::println);
+        context.getOrders().forEach(System.out::println);
     }
 
     public Context getContext()

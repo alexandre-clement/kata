@@ -1,10 +1,17 @@
 package main;
 
+import command.Command;
 import context.Context;
 import context.InputParser;
+import context.NotEnoughTurns;
+import engine.ExecuteScheduler;
+import engine.OutputParser;
+import scheduler.DoNothing;
+import scheduler.Output;
 import scheduler.Planification;
 
 import java.io.IOException;
+import java.util.List;
 
 /**
  * @author Alexandre Clement
@@ -12,13 +19,19 @@ import java.io.IOException;
  */
 public class Main
 {
-    public static void main(String[] args) throws IOException
+    public static void main(String[] args) throws IOException, NotEnoughTurns
     {
         if (args.length < 1)
             throw new IllegalArgumentException();
         String filename = args[0];
-        Context context = new InputParser(filename);
-        Planification planification = new Planification();
-
+        InputParser inputParser = new InputParser(filename);
+        Context context = inputParser.getContext();
+        Planification planification = new DoNothing(new Context(context));
+        Output output = new Output(planification.buildPlanification());
+        output.generate();
+        OutputParser outputParser = new OutputParser(new Context(context));
+        ExecuteScheduler executeScheduler = new ExecuteScheduler(new Context(context), outputParser.getCommands());
+        executeScheduler.execute();
+        executeScheduler.printResult();
     }
 }

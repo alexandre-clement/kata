@@ -25,6 +25,6 @@ public class Fleet extends ArrayList<Drone>
 
     Fleet(List<Drone> drones)
     {
-        super(drones);
+        super(drones.stream().map(Drone::new).collect(Collectors.toList()));
     }
 }
