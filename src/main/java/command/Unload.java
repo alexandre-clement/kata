@@ -1,8 +1,6 @@
 package command;
 
-import context.Drone;
-import context.Item;
-import context.Warehouse;
+import context.*;
 
 /**
  * @author Alexandre Clement
@@ -15,5 +13,14 @@ public class Unload extends Action<Warehouse>
     public Unload(Drone drone, Warehouse target, Item item, int number)
     {
         super(COMMAND_ENUM, drone, target, item, number);
+    }
+
+    @Override
+    public void execute(Context context) throws NotEnoughTurns
+    {
+        super.execute(context);
+        getTarget().remove(getItem(), getNumber());
+        getDrone().add(getItem(), getNumber());
+        getDrone().waitTime(1);
     }
 }

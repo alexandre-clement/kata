@@ -1,8 +1,6 @@
 package command;
 
-import context.Drone;
-import context.Item;
-import context.Order;
+import context.*;
 
 /**
  * @author Alexandre Clement
@@ -15,5 +13,14 @@ public class Deliver extends Action<Order>
     public Deliver(Drone drone, Order target, Item item, int number)
     {
         super(COMMAND_ENUM, drone, target, item, number);
+    }
+
+    @Override
+    public void execute(Context context) throws NotEnoughTurns
+    {
+        super.execute(context);
+        getDrone().remove(getItem(), getNumber());
+        getTarget().add(getItem(), getNumber());
+        getDrone().waitTime(1);
     }
 }

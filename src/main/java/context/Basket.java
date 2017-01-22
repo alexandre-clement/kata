@@ -24,6 +24,11 @@ public class Basket extends ArrayList<Item>
         super(items);
     }
 
+    public void add(Item item, int number)
+    {
+        IntStream.range(0, number).forEach(i -> this.add(item));
+    }
+
     public void remove(Item item, int number)
     {
         IntStream.range(0, number).forEach(i -> this.remove(item));

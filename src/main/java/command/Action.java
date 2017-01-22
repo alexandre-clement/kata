@@ -1,8 +1,6 @@
 package command;
 
-import context.Container;
-import context.Drone;
-import context.Item;
+import context.*;
 
 /**
  * @author Alexandre Clement
@@ -31,6 +29,12 @@ public class Action<T extends Container> implements Command
         return String.format("%d %s %d %d %d", drone.getId(), commandEnum.toString(), target.getId(), item.getId(), number);
     }
 
+    @Override
+    public void execute(Context context) throws NotEnoughTurns
+    {
+        drone.moveTo(target.getLocation());
+    }
+
     public CommandEnum getCommandEnum()
     {
         return commandEnum;
@@ -54,5 +58,11 @@ public class Action<T extends Container> implements Command
     public int getNumber()
     {
         return number;
+    }
+
+    @Override
+    public String toString()
+    {
+        return String.format("Drone %d %s %d %s at %s", drone.getId(), this.getClass().getSimpleName(), number, item, target);
     }
 }

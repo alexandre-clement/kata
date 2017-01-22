@@ -1,8 +1,11 @@
 package context;
 
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 /**
  * @author Alexandre Clement
@@ -10,14 +13,14 @@ import java.util.List;
  */
 public class Fleet extends ArrayList<Drone>
 {
-    Fleet()
+    Fleet(int number, int payload, int turns, Point initLocation)
     {
-        super();
+        this(IntStream.range(0, number).mapToObj(i -> new Drone(i, initLocation, payload, turns)).collect(Collectors.toList()));
     }
 
     Fleet(Drone... drones)
     {
-        super(Arrays.asList(drones));
+        this(Arrays.asList(drones));
     }
 
     Fleet(List<Drone> drones)

@@ -29,6 +29,11 @@ public class Container extends Basket
         this(container.getId(), new Point(container.getLocation()), new Basket(container));
     }
 
+    public int distance(Point location)
+    {
+        return (int) Math.ceil(this.location.distance(location));
+    }
+
     public int getId()
     {
         return id;

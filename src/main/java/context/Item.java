@@ -34,10 +34,13 @@ public class Item
     @Override
     public boolean equals(Object object)
     {
-        if (object == null || getClass() != object.getClass() || this != object)
+        if (this == object)
+            return true;
+        if (object == null || getClass() != object.getClass())
             return false;
-        Item identifiable = (Item) object;
-        return id == identifiable.id;
+        Item item = (Item) object;
+
+        return id == item.getId();
     }
 
     @Override

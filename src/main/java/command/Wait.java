@@ -1,6 +1,8 @@
 package command;
 
+import context.Context;
 import context.Drone;
+import context.NotEnoughTurns;
 
 /**
  * @author Alexandre Clement
@@ -10,17 +12,29 @@ public class Wait implements Command
 {
     private static final CommandEnum COMMAND_ENUM = CommandEnum.W;
     private Drone drone;
-    private int number;
+    private int time;
 
     public Wait(Drone drone, int number)
     {
         this.drone = drone;
-        this.number = number;
+        this.time = number;
     }
 
     @Override
     public String print()
     {
-        return String.format("%d %s %d", drone.getId(), COMMAND_ENUM.toString(), number);
+        return String.format("%d %s %d", drone.getId(), COMMAND_ENUM.toString(), time);
+    }
+
+    @Override
+    public void execute(Context context) throws NotEnoughTurns
+    {
+        context.getFleet().get(drone.getId()).waitTime(time);
+    }
+
+    @Override
+    public String toString()
+    {
+        return String.format("Drone %d wait %d turns.", drone.getId(), time);
     }
 }
