@@ -16,9 +16,9 @@ public class Load extends Action<Warehouse>
     }
 
     @Override
-    public void execute(Context context) throws NotEnoughTurns
+    public void execute() throws NotEnoughTurns
     {
-        super.execute(context);
+        super.execute();
         getTarget().remove(getItem(), getNumber());
         getDrone().add(getItem(), getNumber());
         getDrone().waitTime(1);

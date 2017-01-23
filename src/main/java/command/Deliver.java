@@ -16,11 +16,11 @@ public class Deliver extends Action<Order>
     }
 
     @Override
-    public void execute(Context context) throws NotEnoughTurns
+    public void execute() throws NotEnoughTurns
     {
-        super.execute(context);
+        super.execute();
         getDrone().remove(getItem(), getNumber());
-        getTarget().add(getItem(), getNumber());
+        getTarget().remove(getItem(), getNumber());
         getDrone().waitTime(1);
     }
 }

@@ -27,9 +27,9 @@ public class Wait implements Command
     }
 
     @Override
-    public void execute(Context context) throws NotEnoughTurns
+    public void execute() throws NotEnoughTurns
     {
-        context.getFleet().get(drone.getId()).waitTime(time);
+        drone.waitTime(time);
     }
 
     @Override

@@ -30,7 +30,7 @@ public class Action<T extends Container> implements Command
     }
 
     @Override
-    public void execute(Context context) throws NotEnoughTurns
+    public void execute() throws NotEnoughTurns
     {
         drone.moveTo(target.getLocation());
     }

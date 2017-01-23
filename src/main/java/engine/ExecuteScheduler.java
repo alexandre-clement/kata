@@ -2,9 +2,9 @@ package engine;
 
 import command.Command;
 import context.Context;
-import context.Drone;
 import context.NotEnoughTurns;
 
+import java.io.PrintStream;
 import java.util.List;
 
 /**
@@ -13,6 +13,7 @@ import java.util.List;
  */
 public class ExecuteScheduler
 {
+    private PrintStream out = System.out;
     private Context context;
     private List<Command> planification;
 
@@ -26,14 +27,14 @@ public class ExecuteScheduler
     {
         for (Command command : planification)
         {
-            command.execute(context);
+            command.execute();
         }
     }
 
     public void printResult()
     {
-        context.getFleet().forEach(System.out::println);
-        context.getOrders().forEach(System.out::println);
+        context.getFleet().forEach(out::println);
+        context.getOrders().forEach(out::println);
     }
 
     public Context getContext()

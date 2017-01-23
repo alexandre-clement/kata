@@ -16,11 +16,11 @@ public class Unload extends Action<Warehouse>
     }
 
     @Override
-    public void execute(Context context) throws NotEnoughTurns
+    public void execute() throws NotEnoughTurns
     {
-        super.execute(context);
-        getTarget().remove(getItem(), getNumber());
-        getDrone().add(getItem(), getNumber());
+        super.execute();
+        getDrone().remove(getItem(), getNumber());
+        getTarget().add(getItem(), getNumber());
         getDrone().waitTime(1);
     }
 }

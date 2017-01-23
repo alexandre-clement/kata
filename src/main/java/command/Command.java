@@ -11,5 +11,5 @@ public interface Command
 {
     String print();
 
-    void execute(Context context) throws NotEnoughTurns;
+    void execute() throws NotEnoughTurns;
 }

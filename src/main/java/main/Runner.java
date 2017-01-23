@@ -6,31 +6,24 @@ import context.InputParser;
 import context.NotEnoughTurns;
 import engine.ExecuteScheduler;
 import engine.OutputParser;
-import scheduler.DoNothing;
-import scheduler.Output;
-import scheduler.Planification;
 
 import java.io.IOException;
-import java.util.List;
 
 /**
  * @author Alexandre Clement
  * @since 22/01/2017.
  */
-public class Main
+public class Runner
 {
-    public static void main(String[] args) throws IOException, NotEnoughTurns
+    public static void main(String[] args) throws NotEnoughTurns, IOException
     {
         if (args.length < 1)
             throw new IllegalArgumentException();
         String filename = args[0];
         InputParser inputParser = new InputParser(filename);
         Context context = inputParser.getContext();
-        Planification planification = new DoNothing(new Context(context));
-        Output output = new Output(planification.buildPlanification());
-        output.generate();
         OutputParser outputParser = new OutputParser(new Context(context));
-        ExecuteScheduler executeScheduler = new ExecuteScheduler(new Context(context), outputParser.getCommands());
+        ExecuteScheduler executeScheduler = new ExecuteScheduler(outputParser.getContext(), outputParser.getCommands());
         executeScheduler.execute();
         executeScheduler.printResult();
     }

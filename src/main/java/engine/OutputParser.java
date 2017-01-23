@@ -86,4 +86,9 @@ public class OutputParser
     {
         bufferedReader.close();
     }
+
+    public Context getContext()
+    {
+        return context;
+    }
 }
