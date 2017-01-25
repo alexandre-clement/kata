@@ -12,5 +12,5 @@ import java.util.List;
 @FunctionalInterface
 public interface Planification
 {
-    List<Command> buildPlanification() throws NotEnoughTurns;
+    List<Command> buildPlanification();
 }

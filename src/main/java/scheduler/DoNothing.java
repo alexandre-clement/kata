@@ -4,6 +4,7 @@ import command.Command;
 import context.Context;
 import context.NotEnoughTurns;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -18,7 +19,7 @@ public class DoNothing extends Tools implements Planification
     }
 
     @Override
-    public List<Command> buildPlanification() throws NotEnoughTurns
+    public List<Command> buildPlanification()
     {
         return super.completeWithWait();
     }

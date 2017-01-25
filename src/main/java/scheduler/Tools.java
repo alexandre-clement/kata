@@ -6,7 +6,6 @@ import context.*;
 
 import java.util.*;
 import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 /**
  * @author Alexandre Clement
@@ -29,13 +28,20 @@ class Tools
         fleet = context.getFleet();
     }
 
-    List<Command> completeWithWait() throws NotEnoughTurns
+    List<Command> completeWithWait()
     {
         List<Command> wait = new ArrayList<>();
         for (Drone drone : context.getFleet())
         {
             wait.add(new Wait(drone, drone.getTurns()));
-            drone.waitTime(drone.getTurns());
+            try
+            {
+                drone.waitTime(drone.getTurns());
+            }
+            catch (NotEnoughTurns notEnoughTurns)
+            {
+                System.err.println(notEnoughTurns); // Not supposed to happens
+            }
         }
         return wait;
     }

@@ -22,7 +22,7 @@ public class Strategy extends Tools implements Planification
     }
 
     @Override
-    public List<Command> buildPlanification() throws NotEnoughTurns
+    public List<Command> buildPlanification()
     {
         List<Command> planification = new ArrayList<>();
         List<Container> kernels = getSingletons(getWarehouses());
@@ -31,14 +31,23 @@ public class Strategy extends Tools implements Planification
         List<Cluster> regroup = getFinalCluster(clusters);
         Optional<Drone> drone = findADrone(getFleet());
 
+
         while (drone.isPresent())
         {
             Optional<Cluster> cluster = findACluster(regroup, drone.get());
             if (!cluster.isPresent())
                 break;
-            planification.addAll(commandCluster(cluster.get(), drone.get()));
+            try
+            {
+                planification.addAll(commandCluster(cluster.get(), drone.get()));
+            }
+            catch (NotEnoughTurns notEnoughTurns)
+            {
+                regroup.remove(cluster.get());
+            }
             drone = findADrone(getFleet());
         }
+
         planification.addAll(completeWithWait());
         return planification;
     }
