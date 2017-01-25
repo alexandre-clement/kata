@@ -23,7 +23,7 @@ public class Output
         this(planification, Output.OUT_FILE);
     }
 
-    public Output(List<Command> planification, String filename) throws IOException
+    Output(List<Command> planification, String filename) throws IOException
     {
         this.planification = planification;
         printWriter = new PrintWriter(new BufferedWriter(new FileWriter(filename)));

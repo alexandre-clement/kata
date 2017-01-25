@@ -25,8 +25,8 @@ public class InputParser
     private int columns;
     private Fleet fleet;
     private List<Item> items;
-    private List<Warehouse> warehouses;
-    private List<Order> orders;
+    private List<Container> warehouses;
+    private List<Container> orders;
 
 
     public InputParser(String filename) throws IOException
@@ -63,10 +63,8 @@ public class InputParser
     private void initOrders() throws IOException
     {
         int orderNumber = getObjectNumber();
-        Matcher matcher;
-
         Point location;
-        Order order;
+        Container order;
         int check;
         Integer[] number;
 
@@ -74,7 +72,7 @@ public class InputParser
         for (int i = 0; i < orderNumber; i++)
         {
             location = getLocation();
-            order = new Order(i, location);
+            order = new Container(i, location);
             check = getObjectNumber();
             number = matchMultiObject(check);
             fillOrder(order, number);
@@ -85,18 +83,16 @@ public class InputParser
     private void initWarehouse() throws IOException
     {
         int warehouseNumber = getObjectNumber();
-        Matcher matcher;
-
         int numberOfItem = items.size();
         Point location;
-        Warehouse warehouse;
+        Container warehouse;
         Integer[] number;
 
         warehouses = new ArrayList<>();
         for (int i = 0; i < warehouseNumber; i++)
         {
             location = getLocation();
-            warehouse = new Warehouse(i, location);
+            warehouse = new Container(i, location);
             number = matchMultiObject(numberOfItem);
             fillWarehouse(warehouse, number);
             warehouses.add(warehouse);
@@ -121,7 +117,7 @@ public class InputParser
         return Integer.parseInt(matcher.group(1));
     }
 
-    private void fillOrder(Order order, Integer[] number) throws NotWellFormedInput
+    private void fillOrder(Container order, Integer[] number) throws NotWellFormedInput
     {
         int size = items.size();
         for (Integer integer : number)

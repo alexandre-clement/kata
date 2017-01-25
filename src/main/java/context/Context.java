@@ -9,15 +9,15 @@ import java.util.stream.Collectors;
  */
 public class Context
 {
-    private final List<Warehouse> warehouses;
-    private final List<Order> orders;
+    private final List<Container> warehouses;
+    private final List<Container> orders;
     private final List<Item> items;
     private final Fleet fleet;
 
-    public Context(List<Warehouse> warehouses, List<Order> orders, List<Item> items, Fleet fleet)
+    public Context(List<Container> warehouses, List<Container> orders, List<Item> items, Fleet fleet)
     {
-        this.warehouses = warehouses.stream().map(Warehouse::new).collect(Collectors.toList());
-        this.orders = orders.stream().map(Order::new).collect(Collectors.toList());
+        this.warehouses = warehouses.stream().map(Container::new).collect(Collectors.toList());
+        this.orders = orders.stream().map(Container::new).collect(Collectors.toList());
         this.items = items;
         this.fleet = new Fleet(fleet);
     }
@@ -27,12 +27,12 @@ public class Context
         this(context.getWarehouses(), context.getOrders(), context.getItems(), context.getFleet());
     }
 
-    public List<Warehouse> getWarehouses()
+    public List<Container> getWarehouses()
     {
         return warehouses;
     }
 
-    public List<Order> getOrders()
+    public List<Container> getOrders()
     {
         return orders;
     }

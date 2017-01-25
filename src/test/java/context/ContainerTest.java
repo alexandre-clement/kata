@@ -30,10 +30,18 @@ public class ContainerTest
     }
 
     @Test
-    public void equalsTest() throws Exception
+    public void getSingletons() throws Exception
     {
 
+    }
 
-
+    @Test
+    public void equalsTest() throws Exception
+    {
+        Container container1 = new Container(container);
+        Container container2 = new Container(container);
+        Container container3 = new Container(container.getId()-1, container.getLocation(), container);
+        container1.remove(item1);
+        container2.getLocation().translate(10, 0);
     }
 }

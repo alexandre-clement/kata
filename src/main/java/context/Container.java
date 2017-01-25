@@ -1,6 +1,8 @@
 package context;
 
-import java.awt.*;
+import java.awt.Point;
+import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * @author Alexandre Clement
@@ -29,7 +31,22 @@ public class Container extends Basket
         this(container.getId(), new Point(container.getLocation()), new Basket(container));
     }
 
-    public int distance(Point location)
+    public List<Container> getSingletons()
+    {
+        return this.stream().map(item -> new Container(id, new Point(location), new Basket(item))).collect(Collectors.toList());
+    }
+
+    public void setLocation(Container container)
+    {
+        location.setLocation(container.getLocation());
+    }
+
+    public int distance(Container container)
+    {
+        return distance(container.getLocation());
+    }
+
+    private int distance(Point location)
     {
         return (int) Math.ceil(this.location.distance(location));
     }
@@ -71,8 +88,15 @@ public class Container extends Basket
     public int hashCode()
     {
         int result = super.hashCode();
+        result = 31 * result + location.x;
+        result = 31 * result + location.y;
         result = 31 * result + id;
-        result = 31 * result + (location != null ? location.hashCode() : 0);
         return result;
+    }
+
+    public static int compare(Container c1, Container c2)
+    {
+
+        return c1.distance(c2);
     }
 }

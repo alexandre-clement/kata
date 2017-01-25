@@ -1,6 +1,5 @@
 package main;
 
-import command.Command;
 import context.Context;
 import context.InputParser;
 import context.NotEnoughTurns;
@@ -15,6 +14,10 @@ import java.io.IOException;
  */
 public class Runner
 {
+    private Runner()
+    {
+    }
+
     public static void main(String[] args) throws NotEnoughTurns, IOException
     {
         if (args.length < 1)

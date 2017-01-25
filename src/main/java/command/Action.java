@@ -6,15 +6,15 @@ import context.*;
  * @author Alexandre Clement
  * @since 22/01/2017.
  */
-public class Action<T extends Container> implements Command
+class Action implements Command
 {
     private Drone drone;
-    private T target;
+    private Container target;
     private Item item;
     private int number;
     private CommandEnum commandEnum;
 
-    public Action(CommandEnum commandEnum, Drone drone, T target, Item item, int number)
+    Action(CommandEnum commandEnum, Drone drone, Container target, Item item, int number)
     {
         this.commandEnum = commandEnum;
         this.drone = drone;
@@ -32,12 +32,7 @@ public class Action<T extends Container> implements Command
     @Override
     public void execute() throws NotEnoughTurns
     {
-        drone.moveTo(target.getLocation());
-    }
-
-    public CommandEnum getCommandEnum()
-    {
-        return commandEnum;
+        drone.moveTo(target);
     }
 
     public Drone getDrone()
@@ -45,17 +40,17 @@ public class Action<T extends Container> implements Command
         return drone;
     }
 
-    public T getTarget()
+    Container getTarget()
     {
         return target;
     }
 
-    public Item getItem()
+    Item getItem()
     {
         return item;
     }
 
-    public int getNumber()
+    int getNumber()
     {
         return number;
     }

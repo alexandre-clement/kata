@@ -30,7 +30,7 @@ public class OutputParser
         this(context, Output.OUT_FILE);
     }
 
-    public OutputParser(Context context, String filename) throws IOException
+    OutputParser(Context context, String filename) throws IOException
     {
         this.context = context;
         bufferedReader = new BufferedReader(new FileReader(filename));
@@ -38,7 +38,7 @@ public class OutputParser
         pattern = Pattern.compile("^(\\d+) (W|D|U|L) (\\d+)(?: (\\d+) (\\d+))?$");
     }
 
-    public Command nextCommand() throws IOException
+    Command nextCommand() throws IOException
     {
         String nextCommand = bufferedReader.readLine();
         if (nextCommand == null)
