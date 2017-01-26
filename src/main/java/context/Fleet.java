@@ -18,7 +18,7 @@ public class Fleet extends ArrayList<Drone>
 
     Fleet(int number, int payload, int turns, Point initLocation)
     {
-        this(IntStream.range(0, number).mapToObj(i -> new Drone(i, initLocation, payload, turns)).collect(Collectors.toList()));
+        this(IntStream.range(0, number).mapToObj(i -> new Drone(i, new Point(initLocation), payload, turns)).collect(Collectors.toList()));
         this.payload = payload;
     }
 
