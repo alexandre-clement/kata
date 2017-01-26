@@ -9,13 +9,17 @@ import java.util.stream.Collectors;
  */
 public class Context
 {
+    private int rows;
+    private int columns;
     private final List<Container> warehouses;
     private final List<Container> orders;
     private final List<Item> items;
     private final Fleet fleet;
 
-    public Context(List<Container> warehouses, List<Container> orders, List<Item> items, Fleet fleet)
+    public Context(int rows, int columns, List<Container> warehouses, List<Container> orders, List<Item> items, Fleet fleet)
     {
+        this.rows = rows;
+        this.columns = columns;
         this.warehouses = warehouses.stream().map(Container::new).collect(Collectors.toList());
         this.orders = orders.stream().map(Container::new).collect(Collectors.toList());
         this.items = items;
@@ -24,7 +28,17 @@ public class Context
 
     public Context(Context context)
     {
-        this(context.getWarehouses(), context.getOrders(), context.getItems(), context.getFleet());
+        this(context.getRows(), context.getColumns(), context.getWarehouses(), context.getOrders(), context.getItems(), context.getFleet());
+    }
+
+    public int getRows()
+    {
+        return rows;
+    }
+
+    public int getColumns()
+    {
+        return columns;
     }
 
     public List<Container> getWarehouses()

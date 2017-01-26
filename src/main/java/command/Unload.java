@@ -18,9 +18,6 @@ public class Unload extends Action
     @Override
     public void execute() throws NotEnoughTurns
     {
-        super.execute();
-        getDrone().remove(getItem(), getNumber());
-        getTarget().add(getItem(), getNumber());
-        getDrone().waitTime(1);
+        getDrone().unload(getTarget(), getItem(), getNumber());
     }
 }

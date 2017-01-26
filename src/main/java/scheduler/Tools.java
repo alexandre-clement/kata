@@ -160,7 +160,7 @@ class Tools
         return clusters.stream().filter(c1 -> !c1.isEmpty()).sorted(cmp).findFirst();
     }
 
-    List<Command> commandCluster(Cluster cluster, Drone drone) throws NotEnoughTurns
+    List<Command> commandCluster(Cluster cluster, Drone drone) throws NotEnoughTurns, DroneOverload
     {
         List<Command> commands = new ArrayList<>();
         Container warehouse = cluster.getKernel();

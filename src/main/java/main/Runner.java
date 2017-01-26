@@ -1,6 +1,7 @@
 package main;
 
 import context.Context;
+import context.DroneOverload;
 import context.InputParser;
 import context.NotEnoughTurns;
 import engine.ExecuteScheduler;
@@ -18,7 +19,7 @@ public class Runner
     {
     }
 
-    public static void main(String[] args) throws NotEnoughTurns, IOException
+    public static void main(String[] args) throws NotEnoughTurns, IOException, DroneOverload
     {
         if (args.length < 1)
             throw new IllegalArgumentException();

@@ -2,6 +2,7 @@ package engine;
 
 import command.Command;
 import context.Context;
+import context.DroneOverload;
 import context.NotEnoughTurns;
 
 import java.io.PrintStream;
@@ -23,7 +24,7 @@ public class ExecuteScheduler
         this.planification = planification;
     }
 
-    public void execute() throws NotEnoughTurns
+    public void execute() throws NotEnoughTurns, DroneOverload
     {
         for (Command command : planification)
         {

@@ -16,11 +16,8 @@ public class Load extends Action
     }
 
     @Override
-    public void execute() throws NotEnoughTurns
+    public void execute() throws NotEnoughTurns, DroneOverload
     {
-        super.execute();
-        getTarget().remove(getItem(), getNumber());
-        getDrone().add(getItem(), getNumber());
-        getDrone().waitTime(1);
+        getDrone().load(getTarget(), getItem(), getNumber());
     }
 }

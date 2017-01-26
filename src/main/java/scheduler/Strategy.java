@@ -1,10 +1,7 @@
 package scheduler;
 
 import command.Command;
-import context.Container;
-import context.Context;
-import context.Drone;
-import context.NotEnoughTurns;
+import context.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -44,6 +41,10 @@ public class Strategy extends Tools implements Planification
             catch (NotEnoughTurns notEnoughTurns)
             {
                 regroup.remove(cluster.get());
+            }
+            catch (DroneOverload overload)
+            {
+
             }
             drone = findADrone(getFleet());
         }

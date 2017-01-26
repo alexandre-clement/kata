@@ -1,5 +1,6 @@
 package command;
 
+import context.DroneOverload;
 import context.NotEnoughTurns;
 
 /**
@@ -10,5 +11,5 @@ public interface Command
 {
     String print();
 
-    void execute() throws NotEnoughTurns;
+    void execute() throws NotEnoughTurns, DroneOverload;
 }

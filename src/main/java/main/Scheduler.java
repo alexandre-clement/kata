@@ -2,8 +2,7 @@ package main;
 
 import context.Context;
 import context.InputParser;
-import context.NotEnoughTurns;
-import scheduler.DoNothing;
+import scheduler.Csv;
 import scheduler.Output;
 import scheduler.Planification;
 import scheduler.Strategy;
@@ -30,5 +29,7 @@ public class Scheduler
         Planification planification = new Strategy(new Context(context));
         Output output = new Output(planification.buildPlanification());
         output.generate();
+        Csv csv = new Csv(context);
+        csv.createFile();
     }
 }

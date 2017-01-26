@@ -6,7 +6,7 @@ import context.*;
  * @author Alexandre Clement
  * @since 22/01/2017.
  */
-class Action implements Command
+abstract class Action implements Command
 {
     private Drone drone;
     private Container target;
@@ -27,12 +27,6 @@ class Action implements Command
     public String print()
     {
         return String.format("%d %s %d %d %d", drone.getId(), commandEnum.toString(), target.getId(), item.getId(), number);
-    }
-
-    @Override
-    public void execute() throws NotEnoughTurns
-    {
-        drone.moveTo(target);
     }
 
     public Drone getDrone()

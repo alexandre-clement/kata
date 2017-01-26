@@ -38,7 +38,7 @@ public class InputParser
     {
         initFleet();
         initOrders();
-        return new Context(warehouses, orders, items, fleet);
+        return new Context(rows, columns, warehouses, orders, items, fleet);
     }
 
     void initFleet() throws IOException

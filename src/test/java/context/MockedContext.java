@@ -52,6 +52,6 @@ public class MockedContext
 
     public Context getContext()
     {
-        return new Context(warehouses, orders, items, fleet);
+        return new Context(10, 10, warehouses, orders, items, fleet);
     }
 }

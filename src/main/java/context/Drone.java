@@ -49,11 +49,13 @@ public class Drone extends Container
         turns -= time;
     }
 
-    public Command load(Container warehouse, Item item, int n) throws NotEnoughTurns
+    public Command load(Container warehouse, Item item, int n) throws NotEnoughTurns, DroneOverload
     {
         moveTo(warehouse);
         warehouse.remove(item, n);
         add(item, n);
+        if (getPayload() > payload)
+            throw new DroneOverload();
         waitTime(1);
         return new Load(this, warehouse, item, n);
     }

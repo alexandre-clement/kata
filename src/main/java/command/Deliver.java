@@ -18,9 +18,6 @@ public class Deliver extends Action
     @Override
     public void execute() throws NotEnoughTurns
     {
-        super.execute();
-        getDrone().remove(getItem(), getNumber());
-        getTarget().remove(getItem(), getNumber());
-        getDrone().waitTime(1);
+        getDrone().deliver(getTarget(), getItem(), getNumber());
     }
 }
