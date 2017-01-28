@@ -6,7 +6,7 @@ import context.*;
  * @author Alexandre Clement
  * @since 22/01/2017.
  */
-abstract class Action implements Command
+public abstract class Action implements Command
 {
     private Drone drone;
     private Container target;
@@ -34,7 +34,7 @@ abstract class Action implements Command
         return drone;
     }
 
-    Container getTarget()
+    public Container getTarget()
     {
         return target;
     }
@@ -53,5 +53,11 @@ abstract class Action implements Command
     public String toString()
     {
         return String.format("Drone %d %s %d %s at %s", drone.getId(), this.getClass().getSimpleName(), number, item, target);
+    }
+
+    @Override
+    public CommandEnum getCommandEnum()
+    {
+        return commandEnum;
     }
 }

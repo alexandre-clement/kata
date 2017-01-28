@@ -36,4 +36,10 @@ public class Wait implements Command
     {
         return String.format("Drone %d wait %d turns.", drone.getId(), time);
     }
+
+    @Override
+    public CommandEnum getCommandEnum()
+    {
+        return COMMAND_ENUM;
+    }
 }

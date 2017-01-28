@@ -2,6 +2,7 @@ package engine;
 
 import command.Command;
 import context.Context;
+import context.DroneException;
 import context.DroneOverload;
 import context.NotEnoughTurns;
 
@@ -24,12 +25,17 @@ public class ExecuteScheduler
         this.planification = planification;
     }
 
-    public void execute() throws NotEnoughTurns, DroneOverload
+    public void execute() throws DroneException
     {
         for (Command command : planification)
         {
-            command.execute();
+            executeCommand(command);
         }
+    }
+
+    protected void executeCommand(Command command) throws DroneException
+    {
+        command.execute();
     }
 
     public void printResult()

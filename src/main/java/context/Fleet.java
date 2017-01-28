@@ -15,11 +15,13 @@ import java.util.stream.IntStream;
 public class Fleet extends ArrayList<Drone>
 {
     private int payload;
+    private int turns;
 
     Fleet(int number, int payload, int turns, Point initLocation)
     {
         this(IntStream.range(0, number).mapToObj(i -> new Drone(i, new Point(initLocation), payload, turns)).collect(Collectors.toList()));
         this.payload = payload;
+        this.turns = turns;
     }
 
     Fleet(Drone... drones)
@@ -31,11 +33,19 @@ public class Fleet extends ArrayList<Drone>
     {
         super(drones.stream().map(Drone::new).collect(Collectors.toList()));
         if (!isEmpty())
+        {
             payload = get(0).getPayload();
+            turns = get(0).getTurns();
+        }
     }
 
     public int getPayload()
     {
         return payload;
+    }
+
+    public int getTurns()
+    {
+        return turns;
     }
 }

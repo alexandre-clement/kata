@@ -38,14 +38,11 @@ public class Strategy extends Tools implements Planification
             {
                 planification.addAll(commandCluster(cluster.get(), drone.get()));
             }
-            catch (NotEnoughTurns notEnoughTurns)
+            catch (DroneException exception)
             {
-                regroup.remove(cluster.get());
+                clusters.remove(cluster.get());
             }
-            catch (DroneOverload overload)
-            {
 
-            }
             drone = findADrone(getFleet());
         }
 

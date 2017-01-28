@@ -1,7 +1,6 @@
 package command;
 
-import context.DroneOverload;
-import context.NotEnoughTurns;
+import context.DroneException;
 
 /**
  * @author Alexandre Clement
@@ -11,5 +10,7 @@ public interface Command
 {
     String print();
 
-    void execute() throws NotEnoughTurns, DroneOverload;
+    void execute() throws DroneException;
+
+    CommandEnum getCommandEnum();
 }
