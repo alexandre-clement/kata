@@ -40,7 +40,7 @@ public class Strategy extends Tools implements Planification
             }
             catch (DroneException exception)
             {
-                clusters.remove(cluster.get());
+                regroup.remove(cluster.get());
             }
 
             drone = findADrone(getFleet());

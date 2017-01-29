@@ -6,7 +6,6 @@ import context.MockedContext;
 import org.junit.Before;
 import org.junit.Test;
 import scheduler.MockedPlanification;
-import scheduler.Strategy;
 
 import java.util.List;
 
@@ -28,7 +27,6 @@ public class BenchmarkTest
         context = new MockedContext().getContext();
         planification = new MockedPlanification().getPlanification();
         benchmark = new Benchmark(context, planification);
-
     }
 
     @Test
